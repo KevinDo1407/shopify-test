@@ -1,0 +1,39 @@
+<div class="montserrat-regular personal-image-card">
+  <div>
+    <div
+      class="card__image"
+      style="background: url('{{ data.image_url | image_url }}') no-repeat center center; background-size: cover;"
+    ></div>
+    <div class="d-fl fl-col-center card__content">
+      <div class="montserrat-bold card__content__name">
+        {{ data.display_name }}
+      </div>
+      <div class="card__content__title">
+        {{ data.title }}
+      </div>
+      <div class="card__content__social">
+        <ul class="d-fl fl-center">
+          <li class="card__content__social__facebook">
+            <a href="{{ data.facebook_url }}">
+              {%  render "HOANG-icon-facebook" %}
+            </a>
+          </li>
+          <li class="card__content__social__instagram">
+            <a href="{{ data.instagram_url }}">
+              {%  render "HOANG-icon-instagram" %}
+            </a>
+          </li>
+          <li class="card__content__social__twitter">
+            <a href="{{ data.twitter_url }}">
+              {%  render "HOANG-icon-twitter" %}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  console.log('HOANG-personal-image-card', {{ data | json }});
+</script>

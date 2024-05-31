@@ -1,0 +1,110 @@
+<div class="montserrat-regular personal-section">
+  <h6 class="montserrat-bold personal-section__label">
+    {{  section.settings.label }}
+  </h6>
+
+  <h3 class="montserrat-bold personal-section__title">
+    {{  section.settings.title }}
+  </h3>
+
+  <pre>
+    {{ section.settings.sub_title | strip }}
+  </pre>
+
+  <div class="d-fl items-center personal-list">
+    {% for block in section.blocks %}
+      {%- case block.type -%}
+        {%- when "personal_images" -%}
+          {%  render 'HOANG-personal-image-card' with data: block.settings %}
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Personal List",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "sub_title",
+      "label": "Sub title"
+    },
+    {
+      "type": "color",
+      "id": "social_icon_color",
+      "label": "Social icon color",
+      "default": "#000000"
+    }
+  ],
+  "max_blocks": 8,
+  "blocks": [
+    {
+      "name": "Personal Images",
+      "type": "personal_images",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_url",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "display_name",
+          "label": "Display name"
+        },
+        {
+          "type": "select",
+          "id": "title",
+          "label": "title",
+          "options": [
+            {
+              "value": "profession",
+              "label": "Profession"
+            }
+          ],
+          "default": "profession"
+        },
+        {
+          "type": "url",
+          "id": "facebook_url",
+          "label": "Facebook"
+        },
+        {
+          "type": "url",
+          "id": "instagram_url",
+          "label": "Instagram"
+        },
+        {
+          "type": "url",
+          "id": "twitter_url",
+          "label": "Twitter"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Personal List"
+    }
+  ]
+}
+{% endschema %}
